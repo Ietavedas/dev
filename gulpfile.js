@@ -32,7 +32,7 @@ gulp.task('scripts', function(){
 
 //сжимаем все библиотеки css. библиотеки импортируются в файл app/sass/libs.css
 gulp.task('css-libs', ['sass'], function(){
-	return gulp.src('app/css/libs.css')
+	return gulp.src('app/scss/libs.scss')
 	.pipe(cssnano())
 	.pipe(rename({suffix: '.min'}))
 	.pipe(gulp.dest('app/css'));
@@ -78,7 +78,7 @@ gulp.task('dev', ['browser-sync', 'css-libs', 'scripts'], function(){
 	gulp.watch('app/js/**/*.js', browserSync.reload);
 });
 
-//билдим что получилось после разработки и облегчаем жизнь бекенду
+//билдим что получилось после разработки
 gulp.task('build', ['clean', 'img', 'sass', 'scripts'], function(){
 	
 	var buildCss = gulp.src([
