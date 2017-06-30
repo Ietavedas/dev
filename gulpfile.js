@@ -13,7 +13,7 @@ var gulp = require('gulp'),
 
 //компилим sass
 gulp.task('sass', function(){
-	return gulp.src('app/sass/*.scss')
+	return gulp.src('app/sсss/*.scss')
 	.pipe(sass())
 	.pipe(autoprefixer(['last 2 versions', '> 1%'], {cascade: true}))
 	.pipe(gulp.dest('app/css'));
