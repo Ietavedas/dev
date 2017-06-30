@@ -12,7 +12,7 @@ var gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer');
 
 //компилим sass
-gulp.task('sass', function(){
+gulp.task('sсss', function(){
 	return gulp.src('app/sсss/*.scss')
 	.pipe(sass())
 	.pipe(autoprefixer(['last 2 versions', '> 1%'], {cascade: true}))
@@ -31,7 +31,7 @@ gulp.task('scripts', function(){
 });
 
 //сжимаем все библиотеки css. библиотеки импортируются в файл app/sass/libs.css
-gulp.task('css-libs', ['sass'], function(){
+gulp.task('css-libs', ['sсss'], function(){
 	return gulp.src('app/scss/libs.scss')
 	.pipe(cssnano())
 	.pipe(rename({suffix: '.min'}))
@@ -72,14 +72,14 @@ gulp.task('img', function(){
 
 //запускаем таски для разработки и радуемся
 gulp.task('dev', ['browser-sync', 'css-libs', 'scripts'], function(){
-	gulp.watch('app/sass/*.scss', ['sass']);
+	gulp.watch('app/sсss/*.scss', ['sсss']);
 	gulp.watch('app/*.html', browserSync.reload);
 	gulp.watch('app/css/**/*.css', browserSync.reload);
 	gulp.watch('app/js/**/*.js', browserSync.reload);
 });
 
 //билдим что получилось после разработки
-gulp.task('build', ['clean', 'img', 'sass', 'scripts'], function(){
+gulp.task('build', ['clean', 'img', 'sсss', 'scripts'], function(){
 	
 	var buildCss = gulp.src([
 		'app/css/main.css',
